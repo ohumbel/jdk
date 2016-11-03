@@ -145,6 +145,10 @@ public class ListPackages {
 
     private static void help() {
         System.out.println("");
+        System.out.println("[ To call with jdk 8 (and not detecting jdk duplicates): ]");
+        System.out.println("cd SplitPackageTool");
+        System.out.println("java -cp build/classes/main jdk.ListPackages");
+        System.out.println("");
         System.out.println("usage: ListPackages [-v] [-f <file>] [-d <directory>] [file.jar | file.rar | file.war | exploded directory] ...");
         System.out.println("");
         System.out.println(" -f <file>        file contains a list of file / exploded directory on each line");

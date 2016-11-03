@@ -1,3 +1,3 @@
-module testmodule {
-    exports net.reini;
-}
+//module testmodule {
+//    exports net.reini;
+//}

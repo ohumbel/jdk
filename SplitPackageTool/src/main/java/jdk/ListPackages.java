@@ -28,9 +28,9 @@ package jdk;
 import java.io.File;
 import java.io.IOException;
 import java.io.UncheckedIOException;
-import java.lang.module.ModuleDescriptor;
-import java.lang.module.ModuleFinder;
-import java.lang.module.ModuleReference;
+//import java.lang.module.ModuleDescriptor;
+//import java.lang.module.ModuleFinder;
+//import java.lang.module.ModuleReference;
 import java.net.URI;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -101,7 +101,7 @@ public class ListPackages {
             }
         }
 
-        Map<String, ListPackages> packageToModule = packageToModule();
+//        Map<String, ListPackages> packageToModule = packageToModule();
 
         Map<String, List<ListPackages>> pkgs = new HashMap<>();
         for (ListPackages analyzer : analyzers) {
@@ -110,9 +110,9 @@ public class ListPackages {
                         List<ListPackages> values =
                             pkgs.computeIfAbsent(pn, _k -> new ArrayList<>());
                         values.add(analyzer);
-                        if (packageToModule.containsKey(pn)) {
-                            values.add(packageToModule.get(pn));
-                        }
+//                        if (packageToModule.containsKey(pn)) {
+//                            values.add(packageToModule.get(pn));
+//                        }
                     });
         }
 
@@ -166,10 +166,10 @@ public class ListPackages {
         this.packages = supplier.get();
     }
 
-    private ListPackages(ModuleReference mref) {
-        this.location = mref.location().get();
-        this.packages = mref.descriptor().packages();
-    }
+//    private ListPackages(ModuleReference mref) {
+//        this.location = mref.location().get();
+//        this.packages = mref.descriptor().packages();
+//    }
 
     Set<String> packages() {
         return packages;
@@ -251,13 +251,13 @@ public class ListPackages {
         return packageName;
     }
 
-    private static Map<String, ListPackages> packageToModule() {
-        Map<String, ListPackages> map = new HashMap<>();
-        ModuleFinder.ofSystem().findAll()
-            .stream()
-            .map(mref -> new ListPackages(mref))
-            .forEach(o -> o.packages().forEach(pn -> map.put(pn, o)));
-        return map;
-    }
+//    private static Map<String, ListPackages> packageToModule() {
+//        Map<String, ListPackages> map = new HashMap<>();
+//        ModuleFinder.ofSystem().findAll()
+//            .stream()
+//            .map(mref -> new ListPackages(mref))
+//            .forEach(o -> o.packages().forEach(pn -> map.put(pn, o)));
+//        return map;
+//    }
 
 }
